@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 
+import java.sql.Driver;
 import java.util.List; 
 
 import org.openqa.selenium.By; 
@@ -19,7 +20,7 @@ import cucumber.table.DataTable;
 
 
 
-class OpenGoogleDefinitions
+class OpenGoogleDefinitions<Select>
 {
 
     WebDriver driver = null;
@@ -33,7 +34,7 @@ class OpenGoogleDefinitions
     @When("^I enter invalid data on the page$") 
     public void enterData(DataTable table){ 
        //Initialize data table 
-       List<list> data = table.raw();
+       List<List> data = table.raw();
        System.out.println(data.get(1).get(1)); 
        
        //Enter data
@@ -44,7 +45,7 @@ class OpenGoogleDefinitions
           sendKeys(data.get(4).get(1)); 
        driver.findElement(By.name("reg_passwd__")).sendKeys(data.get(5).get(1)); 
        
-       Select dropdownB = new Select(driver.findElement(By.name("birthday_day"))); 
+       Select dropdownB = new Select(Driver.findElement(By.name("birthday_day"))); 
        dropdownB.selectByValue("15"); 
    
        Select dropdownM = new Select(driver.findElement(By.name("birthday_month")));
